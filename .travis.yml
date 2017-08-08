@@ -11,10 +11,10 @@ before_deploy:
   - cd dist
 deploy:
   provider: npm
-    email: $NPM_EMAIL
-    api_key: $NPM_API_KEY
-    skip_cleanup: true
-    on:
-      tags: true
+  email: $NPM_EMAIL
+  api_key: $NPM_API_KEY
+  skip_cleanup: true
+  on:
+    tags: true
 after_deploy:
   - cd ../
