@@ -1,13 +1,18 @@
 {
   "name": "@dschau/deploy-to-ftp-server",
   "version": "1.0.0",
-  "main": "./dist/index.js",
+  "main": "index.js",
   "bin": {
-    "deploy-to-ftp-server": "./dist/cli.js"
+    "deploy-to-ftp-server": "cli.js"
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "del-cli \"dist/**/*\"",
+    "predeploy": "npm run clean",
+    "deploy": "npm run build",
+    "postdeploy": "bump-version",
+    "test": "echo \"TODO: Write tests\""
   },
   "dependencies": {
     "promise-ftp": "~1.3.3",
@@ -15,7 +20,12 @@
     "recursive-readdir": "~2.2.1"
   },
   "devDependencies": {
+    "@dschau/bump-version-ci": "^1.0.2",
     "@types/node": "~8.0.10",
+    "del-cli": "^1.1.0",
     "typescript": "~2.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
