@@ -7,7 +7,7 @@ let config = rc(NAME, {
   dry: false
 });
 
-if (!config.ftp && !config.paths) {
+if (!config.ftp || !config.paths) {
   try {
     config = require(path.join(process.cwd(), `.${NAME}.js`));
   } catch (e) {

@@ -20,7 +20,7 @@ export default ({
     remotePath
   } = paths;
 
-  client
+  return client
     .connect(ftp)
     .then(connected => {
       return readdir(path.resolve(localPath)).then(files => {
